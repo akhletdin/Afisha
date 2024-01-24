@@ -31,7 +31,9 @@ def director_detail_api_view(request, id):
 @api_view(['GET'])
 def movie_list_api_view(request):
     # Step 1: Collect data of products from DB
-    movies = Movie.objects.all()
+    movies = Movie.objects\
+        .select_related('director')\
+        .prefetch_related('reviews').all()
 
     # Step 2: Reformat(Serialize) of products
     data = MovieSerializer(movies, many=True).data
@@ -72,4 +74,3 @@ def review_detail_api_view(request, id):
                         status=status.HTTP_404_NOT_FOUND)
     data = ReviewSerializer(review).data
     return Response(data=data)
-
