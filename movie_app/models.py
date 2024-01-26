@@ -16,11 +16,11 @@ class Movie(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f'{self.title} - {self.description} - {self.director.name}'
+        return f'{self.title} - {self.description} - {self.director_name}'
 
     @property
     def director_name(self):
-        return self.director.name
+        return self.director.name if self.director_id else 'no_director'
 
     @property
     def rating(self):
