@@ -96,12 +96,13 @@ WSGI_APPLICATION = 'djangoAfisha.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('DB_NAME'),
-        'USER': 'db_movie_user',
-        'PASSWORD': '12345',
-        'HOST': 'localhost',
-        'PORT': '5433'
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3'
+        # 'NAME': os.environ.get('DB_NAME'),
+        # 'USER': 'db_movie_user',
+        # 'PASSWORD': '12345',
+        # 'HOST': 'localhost',
+        # 'PORT': '5433'
     }
 }
 
